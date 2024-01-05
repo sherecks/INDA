@@ -5,7 +5,7 @@ export function Rodape(){
             <p className="text-lg mt-8 m-2">
               Design By{' '}
               <a
-                className="text-black font-bold"
+                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
                 href="https://www.joaopedropn.com.br/"
               >
                 João Pedro
@@ -14,7 +14,7 @@ export function Rodape(){
             <p className="text-lg mt-8 m-2">
               <a
                 href=""
-                className="text-black font-bold"
+                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
               >
                 Privacidade
               </a>
@@ -22,7 +22,7 @@ export function Rodape(){
             <p className="text-lg mt-8 m-2">
               <a
                 href=""
-                className="text-black font-bold"
+                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
               >
                 Sobre nós
               </a>
@@ -30,7 +30,7 @@ export function Rodape(){
             <p className="text-lg mt-8 m-2">
               <a
                 href=""
-                className="text-black font-bold"
+                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
               >
                 Fale conosco
               </a>
