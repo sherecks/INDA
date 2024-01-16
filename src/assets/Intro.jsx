@@ -3,7 +3,7 @@ import * as THREE from "../three.module";
 import { OrbitControls } from "../OrbitControls";
 import { useRef, useEffect } from "react";
 import { GLTFLoader } from "../GLTFLoader";
-
+import Stats from "../stats.module";
 
 export function Intro() {
 
@@ -14,12 +14,21 @@ export function Intro() {
     let scene, camera, renderer, controls;
     let ambientLight, directionalLight, directionalLight2
 
+    const stats = new Stats()
+    stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+
     useEffect(() => {
 
         //Camera
         scene = new THREE.Scene();
 
         scene.background = new THREE.Color( 0x060E2E );
+
+        const percentageWidth = 88; // 80% da largura da tela
+        const percentageHeight = 88; // 60% da altura da tela
+
+        const width = (window.innerWidth * percentageWidth) / 100;
+        const height = (window.innerHeight * percentageHeight) / 100;
 
         const size = 25;
         const divisions = 55;
@@ -30,11 +39,11 @@ export function Intro() {
 
         camera = new THREE.PerspectiveCamera(
             45,
-            window.innerWidth / window.innerHeight,
+            window.width / window.height,
             0.1,
             1000
         );
-            camera.position.set(0, 0, 5);
+            camera.position.set(0, 2, 5);
 
         // Criar uma luz ambiente
         ambientLight = new THREE.AmbientLight(0x404040, 1);
@@ -49,11 +58,9 @@ export function Intro() {
         scene.add(directionalLight2);
     
         function onWindowResize() {
-            renderer.setSize(innerWidth, innerHeight);
-            camera.aspect = (innerWidth) / (innerHeight);
+            renderer.setSize(width, height);
+            camera.aspect = (width) / (height);
             camera.updateProjectionMatrix();
-
-            loadObjectBasedOnScreenSize();
         }
 
         window.addEventListener('resize', onWindowResize);
@@ -71,15 +78,30 @@ export function Intro() {
         });
 
         controls = new OrbitControls(camera, renderer.domElement);
-        renderer.setSize(innerWidth, innerHeight);
-        camera.aspect = innerWidth / innerHeight;
+        
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
         camera.updateProjectionMatrix();
         containerRef.current.appendChild(renderer.domElement);
         rendererRef.current = renderer;
         controlsRef.current = controls;
 
+        function animateRotation(object) {
+            const rotationSpeed = 0.004;
+            let direction = 1;
+          
+            const animate = () => {
+              object.rotation.y += direction * rotationSpeed;
+          
+
+              requestAnimationFrame(animate);
+            };
+          
+            animate();
+        }
+
         function loadObjectTest(gltfPath, scaleFactor, position, initialRotation, scene) {
-            const loader = new GLTFLoader().setPath('/tshirt/');
+            const loader = new GLTFLoader().setPath('./src/assets/Imagens/');
             loader.load(gltfPath, (gltf) => {
               const mesh = gltf.scene;
           
@@ -92,12 +114,6 @@ export function Intro() {
           
               animateRotation(mesh);
             });
-        }
-
-        let loadedMobileObject = false;
-        function loadVideoFallback() {
-          // Coloque aqui a lógica para carregar um vídeo de fallback
-          console.log("Carregar um vídeo ou foto de fallback");
         }
 
         // Graphics!!!
@@ -127,46 +143,21 @@ export function Intro() {
         }
         window.addEventListener('load', isGraphicsCapabilitySufficient);
 
-        // Screen Size!!!
-        function loadObjectBasedOnScreenSize() {
-          const screenSizeLimit = 768; // Define o limite de largura da tela para dispositivos móveis
-          
-          if (window.innerWidth < screenSizeLimit && !loadedMobileObject) {
-            scene.children.forEach((object) => {
-              if (object.type === 'Group') {
-                scene.remove(object);
-              }
-            });
-            // Carregue o objeto desejado para dispositivos móveis
-            let loadedObject01 = loadObjectTest('./Imagens/outkast.gltf', 1.8, new THREE.Vector3(0, -1.4, 0), 0, scene);
-            loadedMobileObject = true;
-          } else if (window.innerWidth >= screenSizeLimit) {
-            if (isGraphicsCapabilitySufficient()) {
-              scene.children.forEach((object) => {
-                if (object.type === 'Group') {
-                  scene.remove(object);
-                }
-              });
-        
-              let loadedObject = loadObjectTest('./Imagens/outkast.gltf', 1.8, new THREE.Vector3(0, -2.1, 0), 0, scene);
-
-              loadedMobileObject = false;
-            } else {
-              loadVideoFallback();
-            }
-          }
-        }
-
-        // Chame a função quando a página for carregada e redimensionada!!!
-        window.addEventListener('load', loadObjectBasedOnScreenSize);
-        window.addEventListener('resize', loadObjectBasedOnScreenSize);
+        // Objeto
+        loadObjectTest('outkast.gltf', 2, new THREE.Vector3(0, -2.1, 1.4), 0, scene);
 
         // Controles
         controls.enableRotate = false;
         controls.enableZoom = false;
+        controls.enablePan = false;
   
         // Animate
         function animate() {
+
+            controls.update();
+
+            stats.begin(); 
+            stats.end();
 
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
@@ -184,8 +175,8 @@ export function Intro() {
 
     return (
         <div>
-            <div className="flex items-center justify-center w-full h-full">
-                <div ref={containerRef} className="mx-auto m-4"></div>
+            <div className="flex items-center justify-center">
+                <div ref={containerRef}></div>
             </div>
         </div>
     );

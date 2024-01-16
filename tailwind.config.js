@@ -17,6 +17,10 @@ export default {
         '600': '600px',
       },
     },
+    "scripts": {
+      "build": "npm run build:styles && vite build",
+      "build:styles": "postcss src/styles/index.css -o public/build/bundle.css"
+    },
   },
   plugins: [],
 }
