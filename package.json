@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:styles && vite build",
+    "build:styles": "postcss src/styles/index.css -o public/build/bundle.css",
     "preview": "vite preview"
   },
   "dependencies": {
