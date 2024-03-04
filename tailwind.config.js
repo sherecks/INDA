@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "../index.html",
+    "./src/assets",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -16,10 +16,6 @@ export default {
         '2000': '200px',
         '600': '600px',
       },
-    },
-    "scripts": {
-      "build": "npm run build:styles && vite build",
-      "build:styles": "postcss src/styles/index.css -o public/build/bundle.css"
     },
   },
   plugins: [],
