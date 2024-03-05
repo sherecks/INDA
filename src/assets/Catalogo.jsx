@@ -58,7 +58,7 @@ export function Catalogo(){
                 <Link
                   className="link"
                 >
-                  Adicionar ao Carrinho
+                  Add To Kit
                 </Link>
               </button>
             </div>

@@ -9,7 +9,7 @@ export function Rodape(){
                 className="detail"
                 href="https://www.joaopedropn.com.br/"
               >
-                DESIGN BY JOÃO PEDRO
+                Design By João Pedro
               </a>
             </p>
             <p className="texto">
@@ -17,7 +17,7 @@ export function Rodape(){
                 href=""
                 className="detail"
               >
-                PRIVACIDADE
+                Privacy
               </a>
             </p>
             <p className="texto">
@@ -25,7 +25,7 @@ export function Rodape(){
                 href=""
                 className="detail"
               >
-                SOBRE NÓS
+                About Us
               </a>
             </p>
             <p className="texto">
@@ -33,7 +33,7 @@ export function Rodape(){
                 href=""
                 className="detail"
               >
-                FALE CONOSCO
+                Speak With Us
               </a>
             </p>
             <p className="texto">
@@ -41,7 +41,7 @@ export function Rodape(){
                 href=""
                 className="detail"
               >
-                SEGURANÇA
+                Security
               </a>
             </p>
           </div>

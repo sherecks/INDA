@@ -21,17 +21,17 @@ export function Cabecalho (){
                   to="/Product"
                   className='links'
                 >
-                  PRODUTOS
+                  Products
                 </Link>
               </li>
-              <li>CONTATO</li>
-              <li>OFERTAS</li>
+              <li>Contact</li>
+              <li>Sales</li>
               <li>
                 <Link
                   to="/Cart"
                   className='links'
                 >
-                    CARRINHO
+                    Kit
                 </Link>
               </li>
             </ul>
