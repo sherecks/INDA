@@ -1,0 +1,29 @@
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.titulo {
+  text-decoration: none;
+  color: #101b46;
+  font-size: 42px;
+  margin: 8px;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  list-style-type: none;
+}
+
+li {
+  margin: 10px;
+  font-size: 22px;
+}
+
+.links {
+  text-decoration: none;
+}/*# sourceMappingURL=Cabecalho.css.map */

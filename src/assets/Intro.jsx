@@ -4,6 +4,7 @@ import { OrbitControls } from "../OrbitControls";
 import { useRef, useEffect } from "react";
 import { GLTFLoader } from "../GLTFLoader";
 import Stats from "../stats.module";
+import '../style/Intro.css'
 
 export function Intro() {
 
@@ -24,8 +25,8 @@ export function Intro() {
 
         scene.background = new THREE.Color( 0x060E2E );
 
-        const percentageWidth = 88; // 80% da largura da tela
-        const percentageHeight = 88; // 60% da altura da tela
+        const percentageWidth = 68; // 80% da largura da tela
+        const percentageHeight = 68; // 60% da altura da tela
 
         const width = (window.innerWidth * percentageWidth) / 100;
         const height = (window.innerHeight * percentageHeight) / 100;
@@ -56,14 +57,6 @@ export function Intro() {
         directionalLight2 = new THREE.DirectionalLight(0xffffff, 3.8);
         directionalLight2.position.set(-3, -3, -3);
         scene.add(directionalLight2);
-    
-        function onWindowResize() {
-            renderer.setSize(width, height);
-            camera.aspect = (width) / (height);
-            camera.updateProjectionMatrix();
-        }
-
-        window.addEventListener('resize', onWindowResize);
 
         // Renderer
         let pixelRatio = window.devicePixelRatio
@@ -146,6 +139,15 @@ export function Intro() {
         // Objeto
         loadObjectTest('outkast.gltf', 2, new THREE.Vector3(0, -2.1, 1.4), 0, scene);
 
+        function onWindowResize() {
+            const aspectRatio = window.width / window.height;
+            renderer.setSize(window.width, window.height);
+            camera.aspect = aspectRatio;
+            camera.updateProjectionMatrix();
+        }
+
+        window.addEventListener('resize', onWindowResize);
+
         // Controles
         controls.enableRotate = false;
         controls.enableZoom = false;
@@ -175,7 +177,7 @@ export function Intro() {
 
     return (
         <div>
-            <div className="flex items-center justify-center">
+            <div className="unico">
                 <div ref={containerRef}></div>
             </div>
         </div>

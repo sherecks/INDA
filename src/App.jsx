@@ -1,6 +1,5 @@
 import React from 'react';
 import { Cabecalho } from "./assets/Cabecalho";
-import { Tipos } from "./assets/Tipos";
 import { Catalogo } from "./assets/Catalogo";
 import { Rodape } from "./assets/Rodape";
 import { Videos } from "./assets/Videos"
@@ -14,7 +13,6 @@ function App() {
         <Cabecalho />
         <Intro />
         <SliderText />
-        <Tipos />
         <Catalogo />
         <Rodape />
     </div>

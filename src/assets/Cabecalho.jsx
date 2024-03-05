@@ -1,36 +1,37 @@
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import '../style/Cabecalho.css'
 
 
 export function Cabecalho (){ 
     return (
         <header>
-          <div className="flex flex-wrap justify-between mx-auto">
-            <h1 className='mt-4 m-2 text-4xl'>
-              <Link
-                className="text-gray-800 no-underline font-mono"    
+          <div className="cabecalho">
+            <h1>
+              <Link 
                 to="/"
+                className='titulo'
               >
                 INDA: STREET W HOMIES
               </Link>
             </h1>
       
-            <ul className="flex space-x-4 mt-6 m-2">
+            <ul className='menu'>
               <li>
                 <Link
-                  className="text-md text-black no-underline transition duration-400 hover:text-gray-400"
                   to="/Product"
+                  className='links'
                 >
-                  Produtos
+                  PRODUTOS
                 </Link>
               </li>
-              <li className="text-md">Contato</li>
-              <li className="text-md">Ofertas</li>
+              <li>CONTATO</li>
+              <li>OFERTAS</li>
               <li>
                 <Link
                   to="/Cart"
-                  className="text-md text-black transition duration-200 hover:text-gray-400"
+                  className='links'
                 >
-                    Carrinho
+                    CARRINHO
                 </Link>
               </li>
             </ul>

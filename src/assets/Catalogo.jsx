@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import '../style/catalogo.css'
 
 export function Catalogo(){
 
@@ -43,19 +44,19 @@ export function Catalogo(){
 
 
     return (
-        <div className="flex flex-wrap justify-center mx-auto font-mono">
+        <div className="catalogo">
           {items.map(({ id, img, title, price }) => (
-            <div key={id} className="m-4">
-              <img className="border-10 rounded-lg" src={img} alt={title} />
-              <p className="m-0 p-4 text-12">{title}</p>
-              <p className="p-4 text-16">{price}</p>
+            <div key={id} className="bloco">
+              <img className="foto" src={img} alt={title} />
+              <p className="nome">{title}</p>
+              <p className="preco">{price}</p>
               <button
                 type="button"
-                className="btn p-4 rounded-lg transition duration-200 ease-in-ou"
+                className="botao"
                 onClick={() => addToCart({ id, img, title, price })}
               >
                 <Link
-                  className="w-260 h-50 text-16 font-bold font-mono text-black no-underline transition duration-200 ease-in-out"
+                  className="link"
                 >
                   Adicionar ao Carrinho
                 </Link>

@@ -1,0 +1,49 @@
+.catalogo {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.bloco {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.foto {
+  margin: 0 auto;
+  border-radius: 10px;
+  width: 88%;
+}
+
+.nome {
+  font-size: 18px;
+  padding: 4px;
+}
+
+.preco {
+  font-size: 16px;
+  padding: 4px;
+}
+
+.botao {
+  padding: 4px;
+  border: none;
+  background: none;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 18px;
+  color: #101b46;
+  font-family: Maven Pro;
+}
+
+@media (max-width: 999px) {
+  .catalogo {
+    flex-wrap: wrap;
+  }
+  .foto {
+    width: 100%;
+    border-radius: 10px;
+  }
+}/*# sourceMappingURL=Catalogo.css.map */

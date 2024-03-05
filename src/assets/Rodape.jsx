@@ -1,46 +1,47 @@
+import '../style/Rodape.css'
+
 export function Rodape(){
     return (
         <footer>
-          <div className="flex flex-wrap justify-center mx-auto mt-10 font-mono rounded-sm">
-            <p className="text-lg mt-8 m-2">
-              Design By{' '}
+          <div className="rodape">
+            <p className="texto">
               <a
-                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
+                className="detail"
                 href="https://www.joaopedropn.com.br/"
               >
-                João Pedro
+                DESIGN BY JOÃO PEDRO
               </a>
             </p>
-            <p className="text-lg mt-8 m-2">
+            <p className="texto">
               <a
                 href=""
-                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
+                className="detail"
               >
-                Privacidade
+                PRIVACIDADE
               </a>
             </p>
-            <p className="text-lg mt-8 m-2">
+            <p className="texto">
               <a
                 href=""
-                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
+                className="detail"
               >
-                Sobre nós
+                SOBRE NÓS
               </a>
             </p>
-            <p className="text-lg mt-8 m-2">
+            <p className="texto">
               <a
                 href=""
-                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
+                className="detail"
               >
-                Fale conosco
+                FALE CONOSCO
               </a>
             </p>
-            <p className="text-lg mt-8 m-2">
+            <p className="texto">
               <a
                 href=""
-                className="text-black font-bold transition duration-200 ease-in-out hover:text-gray-400"
+                className="detail"
               >
-                Segurança
+                SEGURANÇA
               </a>
             </p>
           </div>

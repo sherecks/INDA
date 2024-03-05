@@ -12,31 +12,29 @@ export function Carrinho(){
 ];
 
   return (
-    <div className="flex justify-center font-mono">
+    <div>
       {items.map(({ id, img, title, price }) => (
         <div key={id}>
-          <img className="rounded-xl" src={img} alt={title} />
+          <img src={img} alt={title} />
           <div>
-            <p className="text-lg mt-2">{title}</p>
-            <p className="text-lg mt-2">{price}</p>
+            <p >{title}</p>
+            <p >{price}</p>
             <button
               type="button"
-              className="bg-green-500 rounded-xl text-xl mt-2 font-semibold text-black"
             >
              <Link className="m-2" to="/">
                 Finalizar Pedido
               </Link>
             </button>
-            <p className="text-xl w-400 mt-2 mb-2">
+            <p>
               Feita de algodão macio e resistente, ela tem um corte casual.
               Esta camiseta é perfeita para o uso diário.
               Design Aspect...
             </p>
             <button
               type="button"
-              className="bg-blue-800 rounded-xl mt-2 text-xl font-semibold text-white"
             >
-              <Link className="m-2" to="/">
+              <Link to="/">
                 Continuar Comprando
               </Link>
             </button>
