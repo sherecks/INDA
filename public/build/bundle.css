@@ -1,0 +1,32 @@
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.titulo {
+  text-decoration: none;
+  color: #101b46;
+  font-size: 42px;
+  margin: 8px;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  list-style-type: none;
+}
+
+li {
+  margin: 10px;
+  font-size: 22px;
+  color: #101b46;
+}
+
+.links {
+  text-decoration: none;
+  color: #101b46;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkNhYmVjYWxoby5zY3NzIiwiQ2FiZWNhbGhvLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQUE7RUFDQSw4QkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDQ0o7O0FERUE7RUFDSSxxQkFBQTtFQUNBLGNBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtBQ0NKOztBREVBO0VBQ0ksYUFBQTtFQUNBLGVBQUE7RUFDQSxhQUFBO0VBQ0EscUJBQUE7QUNDSjs7QURFQTtFQUNJLFlBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ0NKOztBREVBO0VBQ0kscUJBQUE7RUFDQSxjQUFBO0FDQ0oiLCJmaWxlIjoiYnVuZGxlLmNzcyJ9 */
