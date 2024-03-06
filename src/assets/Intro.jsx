@@ -169,8 +169,12 @@ export function Intro() {
 
     // Limpeza quando o componente é desmontado
     return () => {
-        containerRef.current.removeChild(rendererRef.current.domElement);
-        controlsRef.current.dispose();
+        if (containerRef.current && rendererRef.current) {
+            containerRef.current.removeChild(rendererRef.current.domElement);
+        }
+        if (controlsRef.current) {
+            controlsRef.current.dispose();
+        }
     };
     }, []);
     

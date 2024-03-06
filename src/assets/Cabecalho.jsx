@@ -18,7 +18,7 @@ export function Cabecalho (){
             <ul className='menu'>
               <li>
                 <Link
-                  to="/Product"
+                  to="./Product"
                   className='links'
                 >
                   Products
@@ -28,7 +28,7 @@ export function Cabecalho (){
               <li>Sales</li>
               <li>
                 <Link
-                  to="/Cart"
+                  to="./Cart"
                   className='links'
                 >
                     Kit
