@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run build:styles && vite build",
-    "build:styles": "postcss src/style/Cabecalho.css -o public/build/bundle.css",
+    "build:styles": "postcss src/style/Cabecalho.css Carrinho.css Catalogo.css Intro.css Rodape.css StyleText.css -o public/build/bundle.css",
     "preview": "vite preview"
   },
   "dependencies": {
