@@ -4,26 +4,26 @@ import { OrbitControls } from "../OrbitControls";
 import { useRef, useEffect } from "react";
 import { GLTFLoader } from "../GLTFLoader";
 import Stats from "../stats.module";
+import { useMediaQuery } from 'react-responsive';
 import '../style/Intro.css'
 
 export function Intro() {
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1024px)'
+    });
 
     const containerRef = useRef();
     const rendererRef = useRef();
     const controlsRef = useRef();
 
-    let scene, camera, renderer, controls;
-    let ambientLight, directionalLight, directionalLight2
-
-    const stats = new Stats()
-    stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-
     useEffect(() => {
+        if (!isDesktopOrLaptop) {
+            return; // Early return if it's not desktop or laptop
+        }
 
-        //Camera
-        scene = new THREE.Scene();
-
-        scene.background = new THREE.Color( 0x060E2E );
+        // Camera
+        let scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x060E2E);
 
         const percentageWidth = 68; // 80% da largura da tela
         const percentageHeight = 68; // 60% da altura da tela
@@ -35,42 +35,42 @@ export function Intro() {
         const divisions = 55;
         
         const gridHelper = new THREE.GridHelper(size, divisions);
-        gridHelper.rotation.x = Math.PI / 2; 
+        gridHelper.rotation.x = Math.PI / 2;
         scene.add(gridHelper);
 
-        camera = new THREE.PerspectiveCamera(
+        let camera = new THREE.PerspectiveCamera(
             45,
-            window.width / window.height,
+            window.innerWidth / window.innerHeight,
             0.1,
             1000
         );
-            camera.position.set(0, 2, 5);
+        camera.position.set(0, 2, 5);
 
         // Criar uma luz ambiente
-        ambientLight = new THREE.AmbientLight(0x404040, 1);
+        let ambientLight = new THREE.AmbientLight(0x404040, 1);
         scene.add(ambientLight);
 
-        directionalLight = new THREE.DirectionalLight(0xffffff, 3.8);
+        let directionalLight = new THREE.DirectionalLight(0xffffff, 3.8);
         directionalLight.position.set(1, 1, 1);
         scene.add(directionalLight);
 
-        directionalLight2 = new THREE.DirectionalLight(0xffffff, 3.8);
+        let directionalLight2 = new THREE.DirectionalLight(0xffffff, 3.8);
         directionalLight2.position.set(-3, -3, -3);
         scene.add(directionalLight2);
 
         // Renderer
-        let pixelRatio = window.devicePixelRatio
-        let AA = true
+        let pixelRatio = window.devicePixelRatio;
+        let AA = true;
         if (pixelRatio > 1) {
-            AA = false
+            AA = false;
         }
 
-        renderer = new THREE.WebGLRenderer({
+        let renderer = new THREE.WebGLRenderer({
             antialias: AA,
             powerPreference: "high-performance",
         });
 
-        controls = new OrbitControls(camera, renderer.domElement);
+        let controls = new OrbitControls(camera, renderer.domElement);
         
         renderer.setSize(width, height);
         camera.aspect = width / height;
@@ -85,7 +85,6 @@ export function Intro() {
           
             const animate = () => {
               object.rotation.y += direction * rotationSpeed;
-          
 
               requestAnimationFrame(animate);
             };
@@ -98,10 +97,9 @@ export function Intro() {
             loader.load(gltfPath, (gltf) => {
               const mesh = gltf.scene;
           
-              // Configure a escala, posição e rotação com base nos parâmetros
               mesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
               mesh.position.copy(position);
-              mesh.rotation.set(0, initialRotation, 0); // Defina a rotação inicial no eixo Y
+              mesh.rotation.set(0, initialRotation, 0);
           
               scene.add(mesh);
           
@@ -109,7 +107,7 @@ export function Intro() {
             });
         }
 
-        // Graphics!!!
+        // Graphics
         const canvas = document.createElement('canvas');
         const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
@@ -122,9 +120,8 @@ export function Intro() {
           const requiredExtension = 'OES_texture_float';
           const extensionSupported = gl.getExtension(requiredExtension) !== null;
         
-          // Verifique a potência da GPU (neste exemplo, verifica o tamanho máximo de textura suportado)
           const maxTextureSize = gl.getParameter(gl.MAX_TEXTURE_SIZE);
-          const minRequiredTextureSize = 512; // Tamanho mínimo de textura necessário
+          const minRequiredTextureSize = 512;
         
           if (extensionSupported && maxTextureSize >= minRequiredTextureSize) {
             console.log("OK - Capacidade gráfica é suficiente");
@@ -136,54 +133,49 @@ export function Intro() {
         }
         window.addEventListener('load', isGraphicsCapabilitySufficient);
 
-        // Objeto
+        // Object
         loadObjectTest('outkast.gltf', 2, new THREE.Vector3(0, -2.1, 1.4), 0, scene);
 
         function onWindowResize() {
-            const aspectRatio = window.width / window.height;
-            renderer.setSize(window.width, window.height);
+            const aspectRatio = window.innerWidth / window.innerHeight;
+            renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = aspectRatio;
             camera.updateProjectionMatrix();
         }
 
         window.addEventListener('resize', onWindowResize);
 
-        // Controles
+        // Controls
         controls.enableRotate = false;
         controls.enableZoom = false;
         controls.enablePan = false;
   
         // Animate
         function animate() {
-
             controls.update();
-
-            stats.begin(); 
-            stats.end();
-
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
         }
 
         animate();
 
-    // Limpeza quando o componente é desmontado
-    return () => {
-        if (containerRef.current && rendererRef.current) {
-            containerRef.current.removeChild(rendererRef.current.domElement);
-        }
-        if (controlsRef.current) {
-            controlsRef.current.dispose();
-        }
-    };
-    }, []);
-    
+        return () => {
+            if (containerRef.current && rendererRef.current) {
+                containerRef.current.removeChild(rendererRef.current.domElement);
+            }
+            if (controlsRef.current) {
+                controlsRef.current.dispose();
+            }
+            window.removeEventListener('resize', onWindowResize);
+            window.removeEventListener('load', isGraphicsCapabilitySufficient);
+        };
+    }, [isDesktopOrLaptop]);
 
-    return (
+    return isDesktopOrLaptop ? (
         <div>
             <div className="unico">
                 <div ref={containerRef}></div>
             </div>
         </div>
-    );
+    ) : null;
 }

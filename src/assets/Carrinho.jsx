@@ -6,15 +6,16 @@ export function Carrinho(){
   const items = [
     {
         id:1,
-        img: "./src/assets/Imagens/1.png",
-        title: "Outkast",
-        price: "R$:69,90"
+        img: "./src/assets/Imagens/tshit4.png",
+        title: "Birds",
+        price: "R$:139,90",
+        detalhe: " Feita de algodão macio e resistente. Esta camiseta é perfeita para o uso diário."
     },
 ];
 
   return (
     <div>
-      {items.map(({ id, img, title, price }) => (
+      {items.map(({ id, img, title, price, detalhe }) => (
         <div key={id}>
           <img className='fotoC' src={img} alt={title} />
           <div>
@@ -28,11 +29,7 @@ export function Carrinho(){
                 Finalizar Pedido
               </Link>
             </button>
-            <p className='detalhe'>
-              Feita de algodão macio e resistente, ela tem um corte casual.
-              Esta camiseta é perfeita para o uso diário.
-              Design Aspect...
-            </p>
+            <br/>
             <button
               type="button"
               className='botao'
@@ -41,6 +38,7 @@ export function Carrinho(){
                 Continuar Comprando
               </Link>
             </button>
+            <p className='detalhe'>{detalhe}</p>
           </div>
         </div>
       ))}
