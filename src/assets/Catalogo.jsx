@@ -6,7 +6,7 @@ export function Catalogo(){
     const items = [
         {
             id:1,
-            img: "./src/assets/Imagens/tshit1.png",
+            img: "./src/assets/Imagens/tshit4.png",
             title: "Topography",
             price: "R$:69,90"
         },
@@ -18,7 +18,7 @@ export function Catalogo(){
         },
         {
             id:3,
-            img: "./src/assets/Imagens/tshit4.png",
+            img: "./src/assets/Imagens/tshit1.png",
             title: "Birds",
             price: "R$:89,90"
         },

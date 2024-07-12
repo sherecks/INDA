@@ -3,11 +3,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
     text-align: center;
-    margin: 50px;
+    margin: 20px auto;
 }
 
 .texto {
-    margin: 0 auto;
+    margin: 8px auto;
+    padding: 12px;
     text-decoration: none;
 }
 
@@ -15,4 +16,12 @@
     font: bold;
     text-decoration: none;
     color: #101b46;
+}
+
+@media (max-width: 999px) {
+
+    .texto{
+        margin: 8px;
+    }
+    
 }

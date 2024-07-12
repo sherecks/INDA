@@ -39,6 +39,7 @@ export function Carrinho(){
               </Link>
             </button>
             <p className='detalhe'>{detalhe}</p>
+            <br/>
           </div>
         </div>
       ))}
